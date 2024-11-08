@@ -7,6 +7,7 @@ import hpp from "hpp";
 import rateLimit from "express-rate-limit";
 import morgan from "morgan";
 import authRoutes from "./routes/auth.routes";
+import userRoutes from "./routes/user.routes";
 
 const app: Application = express();
 app.set("trust proxy", 1);
@@ -48,6 +49,11 @@ app.get("/api/v1", (req: Request, res: Response) => {
  * @group Auth - Authentication Management
  */
 app.use("/api/v1/auth", authRoutes);
+
+/**
+ * API User Management Routes
+ */
+app.use("/api/v1/user", userRoutes);
 
 /**
  * Catch-all route handler function

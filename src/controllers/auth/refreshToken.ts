@@ -9,7 +9,6 @@ interface RefreshTokenPayload extends JwtPayload {
 
 export const refreshToken = (req: Request, res: Response) => {
   const { refreshToken } = req.body;
-  console.log(req.body);
 
   if (!refreshToken)
     return res.status(401).json({
@@ -24,10 +23,11 @@ export const refreshToken = (req: Request, res: Response) => {
       if (err || !decoded || typeof decoded === "string")
         return res.sendStatus(403);
       const user = decoded as RefreshTokenPayload;
-      console.log(user);
-      const userId = user.userId;
+      // console.log(user);
+      const userId = user.id;
       const accessToken = generateAccessToken(userId);
       // Send success message with the access token
+      // console.log("Access token refreshed successfully.");
       res.json({
         statusText: "success",
         message: "Access token refreshed successfully.",
