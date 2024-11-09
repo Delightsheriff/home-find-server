@@ -24,9 +24,8 @@ export interface IEnvironment {
     REFRESH: string;
   };
   STORAGE: {
-    AZURE_CONTAINER_NAME?: string;
-    AZURE_STORAGE_ACCOUNT_NAME?: string;
-    AZURE_STORAGE_KEY?: string;
+    AZURE_CONTAINER_NAME: string;
+    AZURE_STORAGE_CONNECTION_STRING: string;
   };
   PAYSTACK: {
     PAYSTACK_SECRET_KEY: string;
