@@ -2,7 +2,6 @@ import { Types } from "mongoose";
 import {
   CommercialSubType,
   IndustrialSubType,
-  LandSubType,
   PropertyType,
   Purpose,
   ResidentialSubType,
@@ -45,16 +44,11 @@ export interface IProperty {
   bathrooms: number;
   address: string;
   stateCapital: string;
-  localGovernment: string;
   isVerified: boolean;
   size: number;
   toilets: number;
   propertyType: PropertyType;
-  subType:
-    | ResidentialSubType
-    | CommercialSubType
-    | IndustrialSubType
-    | LandSubType;
+  subType: ResidentialSubType | CommercialSubType | IndustrialSubType;
   verificationStatus: VerificationStatus;
   imagesUrl: string[];
   videoUrl?: string;

@@ -21,7 +21,6 @@ export enum PropertyType {
   RESIDENTIAL = "residential",
   COMMERCIAL = "commercial",
   INDUSTRIAL = "industrial",
-  LAND = "land",
 }
 
 export enum ResidentialSubType {
@@ -50,13 +49,6 @@ export enum CommercialSubType {
 export enum IndustrialSubType {
   Warehouse = "warehouse",
   Factory = "factory",
-}
-
-export enum LandSubType {
-  ResidentialLot = "residentialLot",
-  CommercialLot = "commercialLot",
-  Agricultural = "agricultural",
-  Recreational = "recreational",
 }
 
 export enum PaymentStatus {
