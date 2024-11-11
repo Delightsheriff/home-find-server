@@ -15,7 +15,7 @@ export async function getOwnerProperties(
       });
     }
 
-    const userId = req.user._id;
+    const userId = req.user?.id;
 
     // Fetch the user's role from the database
     const user = await User.findById(userId).select("role");

@@ -8,6 +8,7 @@ import rateLimit from "express-rate-limit";
 import morgan from "morgan";
 import authRoutes from "./routes/auth.routes";
 import userRoutes from "./routes/user.routes";
+import propertyRoutes from "./routes/property.routes"
 
 const app: Application = express();
 app.set("trust proxy", 1);
@@ -54,6 +55,13 @@ app.use("/api/v1/auth", authRoutes);
  * API User Management Routes
  */
 app.use("/api/v1/user", userRoutes);
+
+/**
+ * API Property routes
+ * @route POST, PATCH, DELETE /api/v1/property
+ * @group Property - Property Management
+ */
+app.use("/api/v1/property", propertyRoutes);
 
 /**
  * Catch-all route handler function

@@ -20,7 +20,7 @@ export async function postProperty(req: AuthenticatedRequest, res: Response) {
       });
     }
 
-    const userId = req.user._id;
+    const userId = req.user.id;
 
     // Fetch the user's role from the database
     const user = await User.findById(userId).select("role");
@@ -37,9 +37,10 @@ export async function postProperty(req: AuthenticatedRequest, res: Response) {
         message: "Forbidden: Only landlords can access this resource",
       });
     }
-
+    console.log(req.body);
     // Validate the incoming data
     const validationErrors = validatePropertyData(req.body);
+    console.log(validationErrors);
     if (validationErrors.length > 0) {
       return res.status(400).json({
         success: false,
@@ -61,7 +62,7 @@ export async function postProperty(req: AuthenticatedRequest, res: Response) {
     // Create a new property object
     const newProperty = new Property({
       ...req.body,
-      owner: req.user._id,
+      owner: req.user.id,
       imagesUrl: imagesUrls,
       ownerShipDocumentUrl: ownershipDocumentUrl,
       videoUrl: videoUrl,
