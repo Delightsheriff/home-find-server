@@ -103,48 +103,6 @@ export function validatePropertyData(data: any): string[] {
       errors.push("Invalid subType for the selected propertyType");
     }
   }
-  // Amenity validation
-  if (data.amenities) {
-    try {
-      const amenitiesObj = JSON.parse(data.amenities);
-
-      // Ensure the amenities object has boolean values for each key
-      const validAmenitiesKeys = [
-        "furnished",
-        "parking",
-        "gym",
-        "swimmingPool",
-        "internet",
-        "balcony",
-        "elevator",
-        "wheelchair",
-        "dishwasher",
-        "petsAllowed",
-        "smokingAllowed",
-        "fireplace",
-        "cableTv",
-        "airConditioning",
-        "heating",
-        "securitySystem",
-        "cctv",
-        "churchNearby",
-        "mosqueNearby",
-        "security",
-        "waterSupply",
-        "electricity",
-      ];
-
-      Object.keys(amenitiesObj).forEach((key) => {
-        if (!validAmenitiesKeys.includes(key)) {
-          errors.push(`Invalid amenity: ${key}`);
-        } else if (typeof amenitiesObj[key] !== "boolean") {
-          errors.push(`The value of ${key} must be a boolean`);
-        }
-      });
-    } catch (error) {
-      errors.push("Invalid amenities data");
-    }
-  }
 
   return errors;
 }

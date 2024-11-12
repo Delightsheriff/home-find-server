@@ -12,6 +12,7 @@ import {
 } from "../../common/utils/upload";
 
 export async function postProperty(req: AuthenticatedRequest, res: Response) {
+  let parsedAmenities;
   try {
     if (!req.user) {
       return res.status(401).json({
@@ -37,10 +38,12 @@ export async function postProperty(req: AuthenticatedRequest, res: Response) {
         message: "Forbidden: Only landlords can access this resource",
       });
     }
-    console.log(req.body);
+    console.log("request", req.body);
     // Validate the incoming data
+    parsedAmenities = JSON.parse(req.body.amenities);
+    console.log("amenitites", parsedAmenities);
     const validationErrors = validatePropertyData(req.body);
-    console.log(validationErrors);
+    console.log("errors", validationErrors);
     if (validationErrors.length > 0) {
       return res.status(400).json({
         success: false,
@@ -63,6 +66,7 @@ export async function postProperty(req: AuthenticatedRequest, res: Response) {
     const newProperty = new Property({
       ...req.body,
       owner: req.user.id,
+      amenities: parsedAmenities,
       imagesUrl: imagesUrls,
       ownerShipDocumentUrl: ownershipDocumentUrl,
       videoUrl: videoUrl,
