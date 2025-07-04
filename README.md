@@ -62,10 +62,9 @@ Before you begin, ensure you have the following installed:
 ### Installation
 
 1.  **Clone the repository:**
-    Replace `your-repository-url` with the actual URL of this repository.
     ```bash
-    git clone your-repository-url
-    cd my-app-server # Or your project's root folder name
+    git clone https://github.com/Delightsheriff/home-find-server
+    cd home-find-server
     ```
 
 2.  **Install dependencies:**
